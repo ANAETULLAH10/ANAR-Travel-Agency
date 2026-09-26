@@ -28,25 +28,32 @@ import firebaseConfigData from '../../firebase-applet-config.json';
 import { Booking, UserReview, GuideMessage } from '../types';
 
 const firebaseConfig = {
-  apiKey: firebaseConfigData.apiKey,
-  authDomain: firebaseConfigData.authDomain,
-  projectId: firebaseConfigData.projectId,
-  storageBucket: firebaseConfigData.storageBucket,
-  messagingSenderId: firebaseConfigData.messagingSenderId,
-  appId: firebaseConfigData.appId,
+  apiKey: firebaseConfigData?.apiKey || 'AIzaSyDZKL_zxt016ePDylLSOfjN6xTADHpG6R0',
+  authDomain: firebaseConfigData?.authDomain || 'elite-effect-mvd6f.firebaseapp.com',
+  projectId: firebaseConfigData?.projectId || 'elite-effect-mvd6f',
+  storageBucket: firebaseConfigData?.storageBucket || 'elite-effect-mvd6f.firebasestorage.app',
+  messagingSenderId: firebaseConfigData?.messagingSenderId || '612543905871',
+  appId: firebaseConfigData?.appId || '1:612543905871:web:778622dc9505a62573aa3a',
 };
 
-// Initialize Firebase
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+// Initialize Firebase safely
+let app: any = null;
+try {
+  app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+} catch (err) {
+  console.warn('Firebase initialization warning:', err);
+}
 
 // Initialize Firebase Auth
-export const auth = getAuth(app);
+export const auth = app ? getAuth(app) : ({} as any);
 export const googleProvider = new GoogleAuthProvider();
 
 // Initialize Cloud Firestore using the configured database ID
-export const db = firebaseConfigData.firestoreDatabaseId 
-  ? getFirestore(app, firebaseConfigData.firestoreDatabaseId) 
-  : getFirestore(app);
+export const db = app 
+  ? (firebaseConfigData?.firestoreDatabaseId 
+      ? getFirestore(app, firebaseConfigData.firestoreDatabaseId) 
+      : getFirestore(app))
+  : ({} as any);
 
 // Auth helper functions
 export const signInWithGoogle = async () => {
