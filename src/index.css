@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+.font-script {
+  font-family: 'Kaushan Script', 'Caveat', cursive;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Neumorphism (Soft UI) Utilities */
+.neu-flat {
+  background: #eef2f7;
+  box-shadow: 8px 8px 18px #d1d9e6, -8px -8px 18px #ffffff;
+}
+
+.neu-raised {
+  background: #eef2f7;
+  box-shadow: 12px 12px 24px #cfd8e5, -12px -12px 24px #ffffff;
+}
+
+.neu-raised-sm {
+  background: #eef2f7;
+  box-shadow: 4px 4px 10px #d4dce8, -4px -4px 10px #ffffff;
+}
+
+.neu-inset {
+  background: #e9eff7;
+  box-shadow: inset 4px 4px 8px #c8d3e2, inset -4px -4px 8px #ffffff;
+}
+
+.neu-inset-sm {
+  background: #e9eff7;
+  box-shadow: inset 2px 2px 5px #c8d3e2, inset -2px -2px 5px #ffffff;
+}
+
+.neu-btn {
+  background: #eef2f7;
+  box-shadow: 6px 6px 12px #cfd8e5, -6px -6px 12px #ffffff;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.neu-btn:hover {
+  box-shadow: 4px 4px 8px #cfd8e5, -4px -4px 8px #ffffff;
+  transform: translateY(-1px);
+}
+.neu-btn:active {
+  box-shadow: inset 3px 3px 6px #c4d0e0, inset -3px -3px 6px #ffffff;
+  transform: translateY(0);
+}
+
+.neu-btn-primary {
+  background: linear-gradient(145deg, #0d2758, #13397d);
+  box-shadow: 5px 5px 12px #bcc6d5, -5px -5px 12px #ffffff;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+.neu-btn-primary:hover {
+  background: linear-gradient(145deg, #103270, #19489d);
+  box-shadow: 3px 3px 8px #bcc6d5, -3px -3px 8px #ffffff;
+}
+.neu-btn-primary:active {
+  background: #0d2758;
+  box-shadow: inset 3px 3px 6px #071633, inset -3px -3px 6px #13397d;
+}
+
+.neu-btn-amber {
+  background: linear-gradient(145deg, #f59e0b, #fbbf24);
+  box-shadow: 5px 5px 12px #d4dce8, -5px -5px 12px #ffffff;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+.neu-btn-amber:hover {
+  background: linear-gradient(145deg, #d97706, #f59e0b);
+}
+.neu-btn-amber:active {
+  box-shadow: inset 3px 3px 6px #b45309, inset -3px -3px 6px #fde68a;
+}
+
+/* Ensure all native select options are clearly readable with dark text */
+select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 600;
+  padding: 8px 12px;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, #hero, #destinations, #about, #plans, #guides, #deals, #reviews {
+    display: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

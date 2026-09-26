@@ -1,0 +1,6 @@
+{
+  "name": "ANAR Travel Agency",
+  "description": "Modern travel agency website for discovering and booking journeys across Bangladesh and worldwide destinations with local guides, seamless bKash and Nagad payments, and voice trip planning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
